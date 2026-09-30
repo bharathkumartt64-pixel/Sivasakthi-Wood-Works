@@ -27,6 +27,7 @@ The `woodwork-media` bucket is public for storefront image delivery. Policies re
 
 ## Deployment to Vercel
 Import the repository, set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in project environment variables, deploy, and add the deployed origin to Supabase Auth redirect URLs. `vercel.json` handles SPA routes. Vite variables are public by design; do not add service-role secrets.
+See [DEPLOY_TO_VERCEL.md](DEPLOY_TO_VERCEL.md) for this repository's import and environment-variable setup.
 
 ## Production checklist
 Set legal/privacy/return policies, verify business contact/map/WhatsApp details, add real product/gallery images, tune storage limits and email templates, verify RLS with separate user/admin accounts, enable backups, and test order workflows before accepting live customers. COD order rows are inserted with the authenticated user's ID; authoritative totals and inventory should be hardened with a trusted database function before high-volume production. The COD flow has an atomic server-side database function that calculates totals from current product prices and updates stock. Confirm your delivery/pricing business rules before taking live orders. No fake reviews or business credentials are seeded.
