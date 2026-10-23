@@ -19,6 +19,7 @@ export function AuthPage({ mode = 'login' }) {
   const submit = async (event) => {
     event.preventDefault(); setSending(true); setError('');
     try {
+      if (!supabase) throw new Error('Supabase is not configured. Please configure credentials in .env to use authentication.');
       if (mode === 'signup') {
         const { error: authError } = await supabase.auth.signUp({ email: values.email, password: values.password, options: { data: { full_name: values.full_name, phone: values.phone } } });
         if (authError) throw authError;
